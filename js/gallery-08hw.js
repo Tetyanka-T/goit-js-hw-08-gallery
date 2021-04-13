@@ -1,6 +1,5 @@
 import galleryItems from "./gallery-items.js";
 
-
 const galleryList = document.querySelector(".js-gallery");
 const lightbox = document.querySelector(".lightbox");
 const btn = document.querySelector('button[data-action="close-lightbox"]');
@@ -30,18 +29,27 @@ function openGallery(e) {
   }
   if (e.target.nodeName === "IMG") {
     lightbox.classList.add("is-open");
-    lightboxImage.src = e.target.getAttribute("data-source");
-    lightboxImage.alt = e.target.alt;
+    onClicklightboxImage();
+    // lightboxImage.src = e.target.getAttribute("data-source");
+    // lightboxImage.alt = e.target.alt;
   }
   window.addEventListener("keydown", clickKey);
 }
 
 function closeModal(e) {
   lightbox.classList.remove("is-open");
-  lightboxImage.src = "";
-  lightboxImage.alt = "";
+  onClicklightboxImage("", "");
+  // lightboxImage.src = "";
+  // lightboxImage.alt = "";
 }
 
+function onClicklightboxImage(e) {
+  const showImage = lightboxImage(src, alt);
+  lightboxImage.src = e.target.getAttribute("data-source");
+  lightboxImage.alt = e.target.alt;
+}
+
+  
 function onBtnClick(e) {
   if (e.target === e.currentTarget) {
     closeModal();
