@@ -23,14 +23,15 @@ function openGallery(e) {
   }
   if (e.target.nodeName === "IMG") {
     lightbox.classList.add("is-open");
-    onClicklightboxImage(e); 
+    onClicklightboxImage(e);
   }
   window.addEventListener("keydown", clickKey);
 }
 function closeModal(e) {
   lightbox.classList.remove("is-open");
-  onClicklightboxImage(e);
-  
+  lightboxImage.src = "";
+  lightboxImage.alt = "";
+  window.removeEventListener("keydown", clickKey);
 }
 function onClicklightboxImage(e) {
   lightboxImage.src = e.target.dataset.source;
