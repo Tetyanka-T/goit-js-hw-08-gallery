@@ -39,13 +39,15 @@ function openGallery(e) {
 function closeModal(e) {
   lightbox.classList.remove("is-open");
   onClicklightboxImage("", "");
+ 
   // lightboxImage.src = "";
   // lightboxImage.alt = "";
 }
 
 function onClicklightboxImage(e) {
   const showImage = lightboxImage(src, alt);
-  lightboxImage.src = e.target.getAttribute("data-source");
+  lightboxImage.src = e.target.dataset.source;
+  
   lightboxImage.alt = e.target.alt;
 }
 
