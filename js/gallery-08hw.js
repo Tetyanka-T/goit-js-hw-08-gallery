@@ -29,14 +29,18 @@ function openGallery(e) {
 }
 function closeModal(e) {
   lightbox.classList.remove("is-open");
-  lightboxImage.src = "";
-  lightboxImage.alt = "";
+  updatePopupImage();
+  
   window.removeEventListener("keydown", clickKey);
 }
 function onClicklightboxImage(e) {
-  lightboxImage.src = e.target.dataset.source;
-  lightboxImage.alt = e.target.alt;
-}
+  const t = e.target;
+  updatePopupImage(t.dataset.source, t.alt);
+  }
+function updatePopupImage(src = '', alt = '') {
+  lightboxImage.src = src;
+  lightboxImage.alt = alt;
+  }
 function onBtnClick(e) {
   if (e.target === e.currentTarget) {
     closeModal();
@@ -47,3 +51,5 @@ function clickKey(e) {
     closeModal();
   }
 }
+
+
